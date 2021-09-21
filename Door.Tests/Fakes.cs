@@ -11,33 +11,61 @@ namespace Door.Tests
     {
         public void Close()
         {
-            throw new NotImplementedException();
         }
 
         public void Open()
         {
-            throw new NotImplementedException();
+        }
+    }
+
+    class MockDoor:IDoor
+    {
+        public int CloseCalled=0;
+        public int OpenCalled = 0;
+        public void Close()
+        {
+            CloseCalled++;
+        }
+
+        public void Open()
+        {
+            OpenCalled++;
         }
     }
 
     class FakeValidation: IUserValidation
     {
+        public bool ValidationValue { set; get; }
         public bool ValidateEntryRequest(int id)
         {
-            throw new NotImplementedException();
+            return ValidationValue;
         }
     }
 
     class FakeEntryNotification: IEntryNotification
     {
+
         public void NotifyEntryGranted(int id)
         {
-            throw new NotImplementedException();
         }
 
         public void NotifyEntryDenied(int id)
         {
-            throw new NotImplementedException();
+        }
+    }
+
+    class MockEntryNotification: IEntryNotification
+    {
+        public int NotifyEntryGrantedCalled { get; set; }
+        public int NotifyEntryDeniedCalled { get; set; }
+        public void NotifyEntryGranted(int id)
+        {
+            NotifyEntryGrantedCalled++;
+        }
+
+        public void NotifyEntryDenied(int id)
+        {
+            NotifyEntryDeniedCalled++;
         }
     }
 
@@ -45,7 +73,16 @@ namespace Door.Tests
     {
         public void RaiseAlarm()
         {
-            throw new NotImplementedException();
+        }
+    }
+
+    class MockAlarm:IAlarm
+    {
+        public int RaiseAlarmCalled { get; set; }
+        public void RaiseAlarm()
+        {
+            RaiseAlarmCalled++;
         }
     }
 }
+
