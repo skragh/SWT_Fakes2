@@ -6,24 +6,24 @@ using System.Threading.Tasks;
 
 namespace DoorProj
 {
-    interface IDoor
+    public interface IDoor
     {
         public void Close();
         public void Open();
     }
 
-    interface IUserValidation
+    public interface IUserValidation
     {
         public bool ValidateEntryRequest(int id);
     }
 
-    interface IEntryNotification
+    public interface IEntryNotification
     {
         public void NotifyEntryGranted(int id);
         public void NotifyEntryDenied(int id);
     }
 
-    interface IAlarm
+    public interface IAlarm
     {
         public void RaiseAlarm();
     }
